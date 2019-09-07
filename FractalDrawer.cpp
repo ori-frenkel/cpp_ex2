@@ -14,7 +14,7 @@ using namespace boost::filesystem;
 /**
  *
  * @param ch - char
- * @return - true if its a didgit (0-9)
+ * @return - true if its a digit (0-9)
  */
 bool isDigit(const char &ch)
 {
