@@ -115,7 +115,5 @@ int main(int argc, char* argv[])
     deleteVectorContents(vec);
     input.close();
 
-    // TODO  1 : according to the school solution the end of the test.txt can be empty line.
-
     return 0;
 }
