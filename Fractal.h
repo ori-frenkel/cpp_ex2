@@ -28,6 +28,9 @@ public:
      */
     virtual void draw() = 0;
 
+    /**
+     * Destructor
+     */
     virtual ~Fractal() = default;
 };
 
@@ -47,10 +50,17 @@ private:
     bool inMatrix(long x, long y) const;
 
 public:
+
+    /**
+     * Constructor
+     * @param dim - dimension of the fractal
+     */
     FractalType1(int dim) : Fractal(dim) { _numberOfLines = static_cast<long>(pow(3, _dim));}
+
+    /**
+     * Drawing the fractal
+     */
     void draw() override;
-
-
 
     /**
      * Copy constructor - explicit, allowing to copy only the same type
@@ -90,10 +100,27 @@ public:
 class FractalType2 : public Fractal
 {
 private:
+    /**
+     * (0,0) |(0,1)     #  ,   #
+     * (1,0) | (1,1)    #  , space
+     * as it can be seen there is space in x%2 ==1 and y%2 == 1
+     * meaning if x%2 == 1 and  y%2 == 1 than there is space
+     * @param x - coordinate of x in matrix
+     * @param y - coordinate of x in matrix
+     * @return - true if in (x,y) should be '#" false otherwise.
+     */
     bool inMatrix(long x, long y) const;
 
 public:
+    /**
+     * Constructor
+     * @param dim - dimension of the fractal
+     */
     FractalType2(int dim) : Fractal(dim) { _numberOfLines = static_cast<long>(pow(2, _dim));}
+
+    /**
+     * Drawing the fractal
+     */
     void draw() override;
 
     /**
@@ -133,10 +160,29 @@ public:
 class FractalType3 : public Fractal
 {
 private:
+    /**
+     * (0,0) |(0,1) | (0,2)          #  , space ,    #
+     * (1,0) | (1,1)| (1,2)      space  , space , space
+     * (2,0) | (2,1)| (2,2)          #  , space ,    #
+     * as it can be seen there is space in x%3 ==1 or y%3 == 1
+     * meaning if x % 3 == 1 or  y % 3 == 1 than there is space
+     * @param x - coordinate of x in matrix
+     * @param y - coordinate of x in matrix
+     * @return - true if in (x,y) should be '#" false otherwise.
+     */
     bool inMatrix(long x, long y) const;
 
 public:
+
+    /**
+     * Constructor
+     * @param dim - dimension of the fractal
+     */
     FractalType3(int dim) : Fractal(dim) {_numberOfLines = static_cast<long>(pow(3, _dim));}
+
+    /**
+     * Drawing the fractal
+     */
     void draw() override;
 
     /**
@@ -177,6 +223,12 @@ public:
 class FactoryFractal
 {
 public:
+    /**
+     * implementing factory design pattern
+     * @param typeOfFractal - type of fractal (1,2,3)
+     * @param dim - dimension of the fractal
+     * @return - fractal from the given type and dimension
+     */
     static Fractal* createFractal(int typeOfFractal, int dim);
 
 };
