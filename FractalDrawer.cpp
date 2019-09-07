@@ -21,6 +21,13 @@ bool isDigit(const char &ch)
     return(std::isdigit(ch));
 }
 
+/**
+ * Checking that the line format is legal
+ * @param line - line from the input file
+ * @param typeOfFractal - type of fractal line[0])
+ * @param dimOfFractal - dim of fractal (line[2])
+ * @return true if the line format legal, false otherwise.
+ */
 bool isLegalFormat(std::string line, const char& typeOfFractal, const char& dimOfFractal)
 {
     if(!isDigit(typeOfFractal) || line[1] != ',' || !isDigit(dimOfFractal))
@@ -38,7 +45,12 @@ bool isLegalFormat(std::string line, const char& typeOfFractal, const char& dimO
     return true;
 }
 
-// because this is vectors of pointers and not of object, the destructor won't be called automatically
+
+/**
+ * because this is vectors of pointers and not vector of object, the destructor won't be called
+ * automatically
+ * @param vec - vector that contains all the Fractals.
+ */
 void deleteVectorContents(std::vector<Fractal*> vec)
 {
     for(Fractal *fractal : vec)
@@ -48,7 +60,12 @@ void deleteVectorContents(std::vector<Fractal*> vec)
     vec.clear();
 }
 
-// TODO : remmber, when open file to close the file at the end/ before exiting with error
+/**
+ * Main function - drawing fractals from file (given in command line)
+ * @param argc
+ * @param argv
+ * @return 0 on success, any other number of failure.
+ */
 int main(int argc, char* argv[])
 {
     // This program should only get path to one file.
