@@ -29,13 +29,23 @@ bool isLegalFormat(std::string line, const char& typeOfFractal, const char& dimO
     }
 
     const int typeOfFractalInt = typeOfFractal - '0';
-    const int dimfFractalInt = typeOfFractal - '0';
+    const int dimfFractalInt = dimOfFractal - '0';
     // fractal type should be between 1 and 3 (include) and dim should be between 1 and 6 (include)
     if(typeOfFractalInt < 1 || typeOfFractalInt > 3 || dimfFractalInt < 1 || dimfFractalInt > 6)
     {
         return false;
     }
     return true;
+}
+
+// because this is vectors of pointers and not of object, the destructor won't be called automatically
+void deleteVectorContents(std::vector<Fractal*> vec)
+{
+    for(Fractal *fractal : vec)
+    {
+        delete(fractal);
+    }
+    vec.clear();
 }
 
 // TODO : remmber, when open file to close the file at the end/ before exiting with error
@@ -76,6 +86,7 @@ int main(int argc, char* argv[])
         if(line.length() != 3)
         {
             input.close();
+            deleteVectorContents(vec);
             std::cerr << "Invalid input " << std::endl;
             exit(EXIT_FAILURE);
         }
@@ -85,6 +96,7 @@ int main(int argc, char* argv[])
         if(!isLegalFormat(line, typeOfFractal, dimOfFractal))
         {
             input.close();
+            deleteVectorContents(vec);
             std::cerr << "Invalid input " << std::endl;
             exit(EXIT_FAILURE);
         }
@@ -100,9 +112,10 @@ int main(int argc, char* argv[])
         (*iteratorFractal)->draw();
         std::cout << std::endl;
     }
+    deleteVectorContents(vec);
     input.close();
 
-    // TODO : according to the school solution the end of the test.txt can be empty line.
+    // TODO  1 : according to the school solution the end of the test.txt can be empty line.
 
     return 0;
 }

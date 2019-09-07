@@ -5,6 +5,7 @@
 #ifndef CPPEX2_FRACTAL_H
 #define CPPEX2_FRACTAL_H
 #include <math.h>
+#include <utility>
 
 
 class Fractal
@@ -25,6 +26,8 @@ public:
      * This function prints the Fractal
      */
     virtual void draw() = 0;
+
+    virtual ~Fractal() = default;
 };
 
 class FractalType1 : public Fractal
@@ -46,6 +49,41 @@ public:
     FractalType1(int dim) : Fractal(dim) { _numberOfLines = static_cast<long>(pow(3, _dim));}
     void draw() override;
 
+
+
+    /**
+     * Copy constructor - explicit, allowing to copy only the same type
+     * There is no logic type 1 = type 2 (because those are different fractals)
+     * @param other
+     */
+    explicit FractalType1(const FractalType1& other) = default;
+
+    /**
+     * Move Constructor
+     * @param other - object to copy using move
+     */
+    FractalType1(FractalType1&& other) noexcept = default;
+
+    /**
+     * Copy - Assignment Operator
+     * @param other - object to assign to current object
+     * @return - reference to the current object after assign to it the other object
+     */
+    FractalType1& operator = (const FractalType1& other);
+
+
+    /**
+     * Move assignment
+     * @param other - object to assign to current using move
+     */
+    FractalType1& operator = (FractalType1&& other) noexcept = default;
+
+
+    /**
+     * destructor
+     */
+    ~FractalType1() override  = default;
+
 };
 
 class FractalType2 : public Fractal
@@ -56,6 +94,39 @@ private:
 public:
     FractalType2(int dim) : Fractal(dim) { _numberOfLines = static_cast<long>(pow(2, _dim));}
     void draw() override;
+
+    /**
+     * Copy constructor - explicit, allowing to copy only the same type
+     * There is no logic type 1 = type 2 (because those are different fractals)
+     * @param other
+     */
+    explicit FractalType2(const FractalType2& other) = default;
+
+    /**
+     * Move Constructor
+     * @param other - object to copy using move
+     */
+    FractalType2(FractalType2&& other) noexcept = default;
+
+    /**
+     * Copy - Assignment Operator
+     * @param other - object to assign to current object
+     * @return - reference to the current object after assign to it the other object
+     */
+    FractalType2& operator = (const FractalType2& other);
+
+
+    /**
+     * Move assignment
+     * @param other - object to assign to current using move
+     */
+    FractalType2& operator = (FractalType2&& other) noexcept = default;
+
+
+    /**
+     * destructor
+     */
+    ~FractalType2() override  = default;
 };
 
 class FractalType3 : public Fractal
@@ -66,6 +137,39 @@ private:
 public:
     FractalType3(int dim) : Fractal(dim) {_numberOfLines = static_cast<long>(pow(3, _dim));}
     void draw() override;
+
+    /**
+ * Copy constructor - explicit, allowing to copy only the same type
+ * There is no logic type 1 = type 2 (because those are different fractals)
+ * @param other
+ */
+    explicit FractalType3(const FractalType3& other) = default;
+
+    /**
+     * Move Constructor
+     * @param other - object to copy using move
+     */
+    FractalType3(FractalType3&& other) noexcept = default;
+
+    /**
+     * Copy - Assignment Operator
+     * @param other - object to assign to current object
+     * @return - reference to the current object after assign to it the other object
+     */
+    FractalType3& operator = (const FractalType3& other);
+
+
+    /**
+     * Move assignment
+     * @param other - object to assign to current using move
+     */
+    FractalType3& operator = (FractalType3&& other) noexcept = default;
+
+
+    /**
+     * destructor
+     */
+    ~FractalType3() override  = default;
 
 };
 
