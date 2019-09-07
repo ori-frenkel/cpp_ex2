@@ -5,7 +5,8 @@
 #ifndef CPPEX2_FRACTAL_H
 #define CPPEX2_FRACTAL_H
 #include <math.h>
-#include <utility>
+#include <iostream>
+
 
 
 class Fractal
