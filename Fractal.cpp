@@ -1,6 +1,7 @@
 //
 // Created by Ori Frenkel on 04/09/2019.
 //
+
 #include "Fractal.h"
 
 /**
@@ -10,7 +11,7 @@ void FractalType1::draw()
 {
     for(long i = 0; i < _numberOfLines; i++) {
         for(long j = 0; j < _numberOfLines; j++) {
-            if(inMatrix(i,j))
+            if(inMatrix(i, j))
             {
                 std::cout << "#";
             }
@@ -42,8 +43,8 @@ bool FractalType1::inMatrix(long x, long y) const
         {
             return false;
         }
-        x /= 3;
-        y /= 3;
+        x = (x / 3);
+        y = (y / 3);
     }
     return true;
 }
@@ -66,8 +67,8 @@ bool FractalType3::inMatrix(long x, long y) const
         {
             return false;
         }
-        x /= 3;
-        y /= 3;
+        x = (x / 3);
+        y = (y / 3);
     }
     return true;
 }
@@ -93,6 +94,15 @@ void FractalType3::draw()
     }
 }
 
+/**
+ * (0,0) |(0,1)     #  ,   #
+ * (1,0) | (1,1)    #  , space
+ * as it can be seen there is space in x%2 ==1 and y%2 == 1
+ * meaning if x%2 == 1 and  y%2 == 1 than there is space
+ * @param x - coordinate of x in matrix
+ * @param y - coordinate of x in matrix
+ * @return - true if in (x,y) should be '#" false otherwise.
+ */
 bool FractalType2::inMatrix(long x, long y) const
 {
     while (x!=0 &&  y!=0)
@@ -101,12 +111,15 @@ bool FractalType2::inMatrix(long x, long y) const
         {
             return false;
         }
-        x /= 2;
-        y /= 2;
+        x = (x / 2);
+        y = (y / 2);
     }
     return true;
 }
 
+/**
+ * Drawing the fractal
+ */
 void FractalType2::draw()
 {
     for(long i = 0; i < _numberOfLines; i++) {
@@ -124,6 +137,12 @@ void FractalType2::draw()
     }
 }
 
+/**
+ * implementing factory design pattern
+ * @param typeOfFractal - type of fractal (1,2,3)
+ * @param dim - dimension of the fractal
+ * @return - fractal from the given type and dimension
+ */
 Fractal* FactoryFractal::createFractal(int typeOfFractal, int dim)
 {
     switch(typeOfFractal)
@@ -131,6 +150,6 @@ Fractal* FactoryFractal::createFractal(int typeOfFractal, int dim)
         case 1 : return new FractalType1(dim);
         case 2 : return new FractalType2(dim);
         case 3 : return new FractalType3(dim);
-        default:return nullptr;
+        default: return nullptr;
     }
 }

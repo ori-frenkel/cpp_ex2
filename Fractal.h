@@ -1,26 +1,25 @@
 //
-// Created by Owner on 04/09/2019.
+// Created by Ori Frenkel on 04/09/2019.
 //
 
 #ifndef CPPEX2_FRACTAL_H
 #define CPPEX2_FRACTAL_H
+
 #include <math.h>
 #include <iostream>
-
-
 
 class Fractal
 {
 protected:
     int _dim = 0; /**< the dimension of the matrix */
-    long _numberOfLines; /**< number of row/column (row = column) in the matrix
+    long _numberOfLines = 0; /**< number of row/column (row = column) in the matrix
                             *(representing the Fractal as 2d array/matrix */
 public:
     /**
      * Constructor
      * @param dim he dimension of the matrix
      */
-    Fractal(int dim):_dim(dim){};
+    explicit Fractal(int dim):_dim(dim){};
 
     /**
      * each of the derived function need to implement draw function.
@@ -55,7 +54,8 @@ public:
      * Constructor
      * @param dim - dimension of the fractal
      */
-    FractalType1(int dim) : Fractal(dim) { _numberOfLines = static_cast<long>(pow(3, _dim));}
+    explicit FractalType1(int dim) : Fractal(dim)
+    { _numberOfLines = static_cast<long>(pow(3, _dim));}
 
     /**
      * Drawing the fractal
@@ -67,7 +67,7 @@ public:
      * There is no logic type 1 = type 2 (because those are different fractals)
      * @param other
      */
-    explicit FractalType1(const FractalType1& other) = default;
+    FractalType1(const FractalType1& other) = default;
 
     /**
      * Move Constructor
@@ -80,7 +80,7 @@ public:
      * @param other - object to assign to current object
      * @return - reference to the current object after assign to it the other object
      */
-    FractalType1& operator = (const FractalType1& other);
+    FractalType1& operator = (const FractalType1& other) = default;
 
 
     /**
@@ -116,7 +116,8 @@ public:
      * Constructor
      * @param dim - dimension of the fractal
      */
-    FractalType2(int dim) : Fractal(dim) { _numberOfLines = static_cast<long>(pow(2, _dim));}
+    explicit FractalType2(int dim) : Fractal(dim)
+    { _numberOfLines = static_cast<long>(pow(2, _dim));}
 
     /**
      * Drawing the fractal
@@ -128,7 +129,7 @@ public:
      * There is no logic type 1 = type 2 (because those are different fractals)
      * @param other
      */
-    explicit FractalType2(const FractalType2& other) = default;
+    FractalType2(const FractalType2& other) = default;
 
     /**
      * Move Constructor
@@ -141,7 +142,7 @@ public:
      * @param other - object to assign to current object
      * @return - reference to the current object after assign to it the other object
      */
-    FractalType2& operator = (const FractalType2& other);
+    FractalType2& operator = (const FractalType2& other) = default;
 
 
     /**
@@ -178,7 +179,8 @@ public:
      * Constructor
      * @param dim - dimension of the fractal
      */
-    FractalType3(int dim) : Fractal(dim) {_numberOfLines = static_cast<long>(pow(3, _dim));}
+    explicit FractalType3(int dim) : Fractal(dim)
+    {_numberOfLines = static_cast<long>(pow(3, _dim));}
 
     /**
      * Drawing the fractal
@@ -190,7 +192,7 @@ public:
  * There is no logic type 1 = type 2 (because those are different fractals)
  * @param other
  */
-    explicit FractalType3(const FractalType3& other) = default;
+    FractalType3(const FractalType3& other) = default;
 
     /**
      * Move Constructor
@@ -203,7 +205,7 @@ public:
      * @param other - object to assign to current object
      * @return - reference to the current object after assign to it the other object
      */
-    FractalType3& operator = (const FractalType3& other);
+    FractalType3& operator = (const FractalType3& other) = default;
 
 
     /**
