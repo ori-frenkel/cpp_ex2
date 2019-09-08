@@ -1,0 +1,22 @@
+cpp_ex2
+ori.frenkel
+314643164
+######
+
+Explanation about your exercise:
+In this exercise, I implemented a Fractal drawer -
+A program that get as input a fractal type and its dimension, and print it.
+I design the program using OOP design.
+There is an abstract class - 'Fractal' - because there is no logic in creating a general Fractal.
+In addition, I decide to implement a factory design pattern, using the class FactoryFractal
+because in the program we creating a lot of different type of fractal, and using factory design
+make the good look clearer and easier to expand later on.
+In my first attempt of printing Fractal, I tried using a recursion, I stumble into a problem,
+that I got the right printing, but with a '\n' between them, which can be solved by not printing
+straight forward, and saving the fractal in vector and than printing the vector.
+I decided that I prefer to straight forward printing and not to save the Fractal in buffer and then
+printing.
+So after some thinking, I saw that there is a pattern in the fractals, for example
+in fractal of type 1, if we would look at the fractal as a grind of x,y,
+than x % 3 == 1 and y % 3 == 1 is always empty, so I implemented the draw function using this
+idea and for loops.
