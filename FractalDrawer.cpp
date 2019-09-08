@@ -80,12 +80,12 @@ int main(int argc, char* argv[])
     // checking if the path actually exist
     if (!exists(p))
     {
-        std::cerr << "Invalid input " << std::endl;
+        std::cerr << "Invalid input" << std::endl;
         exit(EXIT_FAILURE);
     }
     if (!is_regular_file(p) || is_directory(p))
     {
-        std::cerr << "Invalid input " << std::endl;
+        std::cerr << "Invalid input" << std::endl;
         exit(EXIT_FAILURE);
     }
 
@@ -104,7 +104,7 @@ int main(int argc, char* argv[])
         {
             input.close();
             deleteVectorContents(vec);
-            std::cerr << "Invalid input " << std::endl;
+            std::cerr << "Invalid input" << std::endl;
             exit(EXIT_FAILURE);
         }
 
@@ -114,7 +114,7 @@ int main(int argc, char* argv[])
         {
             input.close();
             deleteVectorContents(vec);
-            std::cerr << "Invalid input " << std::endl;
+            std::cerr << "Invalid input" << std::endl;
             exit(EXIT_FAILURE);
         }
 
