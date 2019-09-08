@@ -239,6 +239,9 @@ public:
 
 };
 
+/**
+ * implementing Factory design pattern
+ */
 class FactoryFractal
 {
 public:
