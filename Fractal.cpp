@@ -1,5 +1,5 @@
 //
-// Created by Owner on 04/09/2019.
+// Created by Ori Frenkel on 04/09/2019.
 //
 #include "Fractal.h"
 
