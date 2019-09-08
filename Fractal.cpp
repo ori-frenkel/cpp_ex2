@@ -9,9 +9,11 @@
  */
 void FractalType1::draw()
 {
-    for(long i = 0; i < _numberOfLines; i++) {
-        for(long j = 0; j < _numberOfLines; j++) {
-            if(inMatrix(i, j))
+    for(long i = 0; i < _numberOfLines; i++)
+    {
+        for(long j = 0; j < _numberOfLines; j++)
+        {
+            if(_inMatrix(i, j))
             {
                 std::cout << "#";
             }
@@ -35,7 +37,7 @@ void FractalType1::draw()
  * @param y - coordinate of x in matrix
  * @return - true if in (x,y) should be '#" false otherwise.
  */
-bool FractalType1::inMatrix(long x, long y) const
+bool FractalType1::_inMatrix(long x, long y) const
 {
     while (x != 0 &&  y !=0 )
     {
@@ -59,7 +61,7 @@ bool FractalType1::inMatrix(long x, long y) const
  * @param y - coordinate of x in matrix
  * @return - true if in (x,y) should be '#" false otherwise.
  */
-bool FractalType3::inMatrix(long x, long y) const
+bool FractalType3::_inMatrix(long x, long y) const
 {
     while (x!=0 || y!=0)
     {
@@ -74,14 +76,16 @@ bool FractalType3::inMatrix(long x, long y) const
 }
 
 /**
- * Draw Cantor Dust Fractals, check using inMatrix function if there is a need to print
+ * Draw Cantor Dust Fractals, check using _inMatrix function if there is a need to print
  * '#' in (x,y)
  */
 void FractalType3::draw()
 {
-    for(long i = 0; i < _numberOfLines; i++) {
-        for(long j = 0; j < _numberOfLines; j++) {
-            if(inMatrix(i,j))
+    for(long i = 0; i < _numberOfLines; i++)
+    {
+        for(long j = 0; j < _numberOfLines; j++)
+        {
+            if(_inMatrix(i, j))
             {
                 std::cout << "#";
             }
@@ -103,7 +107,7 @@ void FractalType3::draw()
  * @param y - coordinate of x in matrix
  * @return - true if in (x,y) should be '#" false otherwise.
  */
-bool FractalType2::inMatrix(long x, long y) const
+bool FractalType2::_inMatrix(long x, long y) const
 {
     while (x!=0 &&  y!=0)
     {
@@ -122,9 +126,11 @@ bool FractalType2::inMatrix(long x, long y) const
  */
 void FractalType2::draw()
 {
-    for(long i = 0; i < _numberOfLines; i++) {
-        for(long j = 0; j < _numberOfLines; j++) {
-            if(inMatrix(i,j))
+    for(long i = 0; i < _numberOfLines; i++)
+    {
+        for(long j = 0; j < _numberOfLines; j++)
+        {
+            if(_inMatrix(i, j))
             {
                 std::cout << "#";
             }

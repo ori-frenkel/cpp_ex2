@@ -8,6 +8,9 @@
 #include <math.h>
 #include <iostream>
 
+/**
+ * Abstract class - include what each fractal should implement
+ */
 class Fractal
 {
 protected:
@@ -33,6 +36,11 @@ public:
     virtual ~Fractal() = default;
 };
 
+/**
+ * Describes a Fractal of type 1 - # # #
+ *                                 #   #
+ *                                 # # #
+ */
 class FractalType1 : public Fractal
 {
 private:
@@ -46,7 +54,7 @@ private:
      * @param y - coordinate of x in matrix
      * @return - true if in (x,y) should be '#" false otherwise.
      */
-    bool inMatrix(long x, long y) const;
+    bool _inMatrix(long x, long y) const;
 
 public:
 
@@ -55,7 +63,7 @@ public:
      * @param dim - dimension of the fractal
      */
     explicit FractalType1(int dim) : Fractal(dim)
-    { _numberOfLines = static_cast<long>(pow(3, _dim));}
+    { _numberOfLines = static_cast<long>(pow(3, _dim)); }
 
     /**
      * Drawing the fractal
@@ -73,7 +81,7 @@ public:
      * Move Constructor
      * @param other - object to copy using move
      */
-    FractalType1(FractalType1&& other) noexcept = default;
+    FractalType1(FractalType1 && other) noexcept = default;
 
     /**
      * Copy - Assignment Operator
@@ -87,7 +95,7 @@ public:
      * Move assignment
      * @param other - object to assign to current using move
      */
-    FractalType1& operator = (FractalType1&& other) noexcept = default;
+    FractalType1& operator = (FractalType1 && other) noexcept = default;
 
 
     /**
@@ -97,6 +105,10 @@ public:
 
 };
 
+/**
+ * Describe a Fractal of type 2 - # #
+ *                                #
+ */
 class FractalType2 : public Fractal
 {
 private:
@@ -109,7 +121,7 @@ private:
      * @param y - coordinate of x in matrix
      * @return - true if in (x,y) should be '#" false otherwise.
      */
-    bool inMatrix(long x, long y) const;
+    bool _inMatrix(long x, long y) const;
 
 public:
     /**
@@ -117,7 +129,7 @@ public:
      * @param dim - dimension of the fractal
      */
     explicit FractalType2(int dim) : Fractal(dim)
-    { _numberOfLines = static_cast<long>(pow(2, _dim));}
+    { _numberOfLines = static_cast<long>(pow(2, _dim)); }
 
     /**
      * Drawing the fractal
@@ -135,7 +147,7 @@ public:
      * Move Constructor
      * @param other - object to copy using move
      */
-    FractalType2(FractalType2&& other) noexcept = default;
+    FractalType2(FractalType2 && other) noexcept = default;
 
     /**
      * Copy - Assignment Operator
@@ -149,7 +161,7 @@ public:
      * Move assignment
      * @param other - object to assign to current using move
      */
-    FractalType2& operator = (FractalType2&& other) noexcept = default;
+    FractalType2& operator = (FractalType2 && other) noexcept = default;
 
 
     /**
@@ -158,6 +170,11 @@ public:
     ~FractalType2() override  = default;
 };
 
+/**
+ * Describe a Fractal of type 3 - #   #
+ *
+ *                                #   #
+ */
 class FractalType3 : public Fractal
 {
 private:
@@ -171,7 +188,7 @@ private:
      * @param y - coordinate of x in matrix
      * @return - true if in (x,y) should be '#" false otherwise.
      */
-    bool inMatrix(long x, long y) const;
+    bool _inMatrix(long x, long y) const;
 
 public:
 
@@ -180,7 +197,7 @@ public:
      * @param dim - dimension of the fractal
      */
     explicit FractalType3(int dim) : Fractal(dim)
-    {_numberOfLines = static_cast<long>(pow(3, _dim));}
+    {_numberOfLines = static_cast<long>(pow(3, _dim)); }
 
     /**
      * Drawing the fractal
@@ -198,7 +215,7 @@ public:
      * Move Constructor
      * @param other - object to copy using move
      */
-    FractalType3(FractalType3&& other) noexcept = default;
+    FractalType3(FractalType3 && other) noexcept = default;
 
     /**
      * Copy - Assignment Operator
@@ -212,7 +229,7 @@ public:
      * Move assignment
      * @param other - object to assign to current using move
      */
-    FractalType3& operator = (FractalType3&& other) noexcept = default;
+    FractalType3& operator = (FractalType3 && other) noexcept = default;
 
 
     /**
