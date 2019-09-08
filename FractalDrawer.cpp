@@ -121,7 +121,7 @@ int main(int argc, char* argv[])
         try
         {
             vecOfFractals.push_back(FactoryFractal::createFractal((int) (typeOfFractal - '0'), \
-                                                    (int) (dimOfFractal - '0')));
+                                                                  (int) (dimOfFractal - '0')));
         }
         catch(const std::exception&)
         {
