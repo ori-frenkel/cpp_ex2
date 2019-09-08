@@ -93,7 +93,7 @@ int main(int argc, char* argv[])
 
     std::string line;
     std::ifstream input(argv[1]);
-    std::vector<Fractal*> vec;
+    std::vector<Fractal*> vecOfFractals;
 
     /* iterating line by line and creating vectors with all the Fractals (if one of the line is
        in wrong format exit with error) */
@@ -103,7 +103,7 @@ int main(int argc, char* argv[])
         if(line.length() != 3)
         {
             input.close();
-            deleteVectorContents(vec);
+            deleteVectorContents(vecOfFractals);
             std::cerr << "Invalid input" << std::endl;
             exit(EXIT_FAILURE);
         }
@@ -113,23 +113,34 @@ int main(int argc, char* argv[])
         if(!isLegalFormat(line, typeOfFractal, dimOfFractal))
         {
             input.close();
-            deleteVectorContents(vec);
+            deleteVectorContents(vecOfFractals);
             std::cerr << "Invalid input" << std::endl;
             exit(EXIT_FAILURE);
         }
 
-        vec.push_back(FactoryFractal::createFractal((int) (typeOfFractal - '0'), \
+        try
+        {
+            vecOfFractals.push_back(FactoryFractal::createFractal((int) (typeOfFractal - '0'), \
                                                     (int) (dimOfFractal - '0')));
+        }
+        catch(const std::exception&)
+        {
+            input.close();
+            deleteVectorContents(vecOfFractals);
+            std::cerr << "Memory allocation failed" << std::endl;
+            exit(EXIT_FAILURE);
+        }
 
     }
 
     // print the vector content with reverse order
-    for (auto iteratorFractal = vec.rbegin(); iteratorFractal != vec.rend(); ++iteratorFractal)
+    for (auto iteratorFractal = vecOfFractals.rbegin(); iteratorFractal != vecOfFractals.rend(); \
+                                                         ++iteratorFractal)
     {
         (*iteratorFractal)->draw();
         std::cout << std::endl;
     }
-    deleteVectorContents(vec);
+    deleteVectorContents(vecOfFractals);
     input.close();
 
     return 0;
