@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
     if(argc != 2)
     {
         std::cerr << "Usage: FractalDrawer <file path>" << std::endl;
-        exit(EXIT_FAILURE);
+        return EXIT_FAILURE;
     }
 
 
@@ -81,12 +81,12 @@ int main(int argc, char* argv[])
     if (!exists(p))
     {
         std::cerr << "Invalid input" << std::endl;
-        exit(EXIT_FAILURE);
+        return EXIT_FAILURE;
     }
     if (!is_regular_file(p) || is_directory(p))
     {
         std::cerr << "Invalid input" << std::endl;
-        exit(EXIT_FAILURE);
+        return EXIT_FAILURE;
     }
 
 
@@ -102,20 +102,20 @@ int main(int argc, char* argv[])
         // format should be exactly 3 chars (num,num)
         if(line.length() != 3)
         {
-            input.close();
             deleteVectorContents(vecOfFractals);
+            input.close();
             std::cerr << "Invalid input" << std::endl;
-            exit(EXIT_FAILURE);
+            return EXIT_FAILURE;
         }
 
         char typeOfFractal = line[0];
         char dimOfFractal = line[2];
         if(!isLegalFormat(line, typeOfFractal, dimOfFractal))
         {
-            input.close();
             deleteVectorContents(vecOfFractals);
+            input.close();
             std::cerr << "Invalid input" << std::endl;
-            exit(EXIT_FAILURE);
+            return EXIT_FAILURE;
         }
 
         try
@@ -125,10 +125,10 @@ int main(int argc, char* argv[])
         }
         catch(const std::exception&)
         {
-            input.close();
             deleteVectorContents(vecOfFractals);
+            input.close();
             std::cerr << "Memory allocation failed" << std::endl;
-            exit(EXIT_FAILURE);
+            return EXIT_FAILURE;
         }
 
     }
